@@ -1,7 +1,6 @@
 //package com.mybank.tui;
 
 import com.mybank.domain.Account;
-import com.mybank.domain.Bank;
 import com.mybank.domain.CheckingAccount;
 import com.mybank.domain.Customer;
 import com.mybank.domain.SavingsAccount;
@@ -66,7 +65,7 @@ public class TUIdemo extends TApplication {
     @Override
     protected boolean onMenu(TMenuEvent menu) {
         if (menu.getId() == ABOUT_APP) {
-            messageBox("About", "\t\t\t\t\t   Just a simple Jexer demo.\n\nCopyright \u00A9 2023 Katerina \' Babich").show();
+            messageBox("About", "\t\t\t\t\t   Just a simple Jexer demo.\n\nCopyright \u00A9 2023 Katerina \'' Anureva").show();
             return true;
         }
         if (menu.getId() == CUST_INFO) {
@@ -96,13 +95,14 @@ public class TUIdemo extends TApplication {
                         StringBuilder accountDetails = new StringBuilder();
 
                         for (int i = 0; i < customer.getNumberOfAccounts(); i++) {
-                            Account account = customer.getAccount(i);
+                            Account account = customer.getAccount(0);
                             String accountType = account.getClass().getSimpleName();
                             double balance = account.getBalance();
 
-                            accountDetails.append("Account ").append(i+1).append(": ")
-                                    .append(accountType).append(", Balance: $").append(balance)
+                            accountDetails.append("Account 1: ")
+                                    .append(accountType).append(", \nBalance: $").append(balance)
                                     .append("\n");
+
                         }
 
                         details.setText("Owner Name: " + ownerName + " (id=" + custNum + ")\n"
@@ -156,7 +156,9 @@ public class TUIdemo extends TApplication {
                             }
 
                             customer.addAccount(account);
+                            break;  
                         }
+
                     }
 
                     break;
